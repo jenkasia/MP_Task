@@ -1,11 +1,12 @@
 language: node_js
 node_js:
   - 11.13.0
-cashe: npm
+cashe: yarn
+
+install:
+  - yarn install
 script:
-  - npm ci
-  - npm install --global workbox-cli
-  - npm run build
+  - yarn run build
 deploy:
   - provider: pages
     skip_cleanup: true
