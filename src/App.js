@@ -8,7 +8,8 @@ import Sidebar from "./components/Sidebar/Sidebar";
 class App extends React.Component {
 
   state = {
-    favoriteJokes: JSON.parse(localStorage.getItem('favoriteJokes')) || []
+    favoriteJokes: JSON.parse(localStorage.getItem('favoriteJokes')) || [],
+    sidebarIsOpen: true
   }
 
   addFavoriteJoke = (joke) => {
@@ -21,7 +22,6 @@ class App extends React.Component {
     // console.log(newFavoriteJokes)
     localStorage.setItem('favoriteJokes', JSON.stringify(newFavoriteJokes))
   }
-
 
   removeFavoriteJoke = (jokeForRemove) => {
     const favoriteJokes = this.state.favoriteJokes
@@ -40,13 +40,14 @@ class App extends React.Component {
             favoriteJokes: newFavoriteJokesList
           })
       }
-
-      // if (object.hasOwnProperty(joke)) {
-      //   const element = object[joke];
-
-      // }
     }
     console.log('this.state.favoriteJoke', jokeForRemove)
+  }
+
+  openToggleHandler = () => {
+    this.setState({
+      sidebarIsOpen: !this.state.sidebarIsOpen
+    })
   }
 
   render() {
@@ -61,6 +62,8 @@ class App extends React.Component {
         <Sidebar
           jokes={this.state.favoriteJokes}
           removeFavoriteJokeHandler={this.removeFavoriteJoke}
+          sidebarIsOpen={this.state.sidebarIsOpen}
+          onClick={this.openToggleHandler}
         />
 
       </div>
