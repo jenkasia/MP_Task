@@ -1,0 +1,90 @@
+.joke
+  width: 100%
+  border-radius: 20px
+  flex-direction: column
+  display: flex
+  position: relative
+  margin: 20px 0
+  padding: 40px
+  box-sizing: border-box
+  border: 2px solid black
+  background-color: #fff
+  &__content
+    display: flex
+
+  &__icon-box
+    border-radius: 100px
+    display: flex
+    justify-content: center
+    box-sizing: border-box
+    padding: 0 10px
+    width: 40px
+    height: 40px
+    background-color: #ffffff
+    margin-right: 20px
+
+  &__text-icon
+    width: 20px
+
+  &__love-icon
+    // position: absolute
+    margin-left: auto
+    margin-bottom: 10px
+    width: 20px
+    cursor: pointer
+
+  &__layout
+    display: flex
+    flex-direction: column
+    width: calc(100% - 60px)
+
+  &_sidebar
+    border: solid 1px #f8f8f8
+    padding: 20px
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1)
+
+  &__id
+    font-size: 10px
+    display: flex
+    align-items: center
+    font-weight: 500
+    color: #ababab
+    margin-bottom: 5px
+    &-number
+      text-decoration: underline
+      color: #8ea7ff
+      padding-right: 5px
+
+  &__text
+    font-family: Roboto
+    font-size: 18px
+    line-height: 1.44
+    margin-bottom: 23px
+    word-wrap: break-word
+
+  &__id-icon
+    height: 10px
+
+  &__footer
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &__update
+    font-size: 10px
+    color: #ababab
+    margin: 5px 0
+    &-hours
+      font-weight: bold
+
+  &__category
+    position: absolute
+    right: 40px
+    display: block
+    border-radius: 6px
+    background-color: #fdd9d9
+    line-height: 1.4
+    letter-spacing: 2px
+    text-transform: uppercase
+    font-size: 10px
+    font-weight: 500
+    padding: 6px 20px

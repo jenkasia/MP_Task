@@ -1,0 +1,80 @@
+.main-radio
+  &__input
+    display: none
+    &:checked
+      & +.main-radio__label
+        transition: all ease 0.3s
+        &:after
+          opacity: 1
+        &:before
+          border-color: #333333
+
+  &__label
+    transition: all ease 0.3s
+    margin: 5px 0
+    line-height: 1.44
+    position: relative
+    padding-left: 35px
+    cursor: pointer
+    display: inline-block
+    &::before
+      transition: all ease 0.3s
+      content: ""
+      position: absolute
+      width: 20px
+      height: 20px
+      border-radius: 100%
+      box-sizing: border-box
+      border: 2px solid #A1A1A1
+      left: 0
+      bottom: 1px
+    &:after
+      transition: all ease 0.3s
+      opacity: 0
+      content: ""
+      position: absolute
+      width: 10px
+      height: 10px
+      border-radius: 100%
+      background-color: #333333
+      left: 5px
+      bottom: 6px
+
+.search-type__button
+  color: white
+  padding: 10px 40px
+  line-height: 1.4
+  font-weight: bold
+  border-radius: 10px
+  border: 0px
+  background: linear-gradient(#8ea7ff, #4870ff)
+  background-size: 1px 100px
+  transition: background 0.4s ease
+  outline: none
+  margin-top: 5px
+  font-size: 16px
+  transition: all 0.3s ease
+  &:hover
+    background-position: -100px
+    // background: linear-gradient(#809afa, #5a7dfb)
+  &:disabled
+    opacity: .3
+
+.search__input
+  width: 100%
+  height: 42px
+  border-radius: 10px
+  border: solid 2px #333333
+  margin: 15px 0
+  line-height: 1.4
+  color: #333333
+  font-size: 16px
+  padding: 0 15px
+  box-sizing: border-box
+  font-weight: 500
+  &::placeholder
+    color: #ababab
+  &:focus
+    outline: none
+
+.input__box

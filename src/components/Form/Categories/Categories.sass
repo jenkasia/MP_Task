@@ -1,0 +1,34 @@
+.categories
+  display: flex
+  flex-wrap: wrap
+  margin: 10px 0
+  // display: flex
+
+.category
+  margin: 5px 0
+  margin-right: 10px
+  border-radius: 6px
+  border: solid 2px #f8f8f8
+
+.sub-radio
+  &__input
+    display: none
+    &:checked + .sub-radio__label
+      color: #333333
+      background-color: #f8f8f8
+
+  &__label
+    padding: 6px 15px
+    display: block
+    text-transform: uppercase
+    font-size: 12px
+    font-weight: bold
+    line-height: 1.33
+    letter-spacing: 2px
+    color: #ababab
+    transition: all 0.3s ease
+    &:hover
+      background-color: #f8f8f8
+      color: #333333
+    &:not(:last-child)
+      margin-right: 10px
