@@ -44,7 +44,6 @@ class Form extends React.Component {
   }
 
   searchFieldHandler = event => {
-    // console.log(event.target.value.length)
     if (event.target.value.length < 3 || event.target.value.length > 120) {
       this.setState({
         search: event.target.value,
@@ -62,7 +61,6 @@ class Form extends React.Component {
 
   render() {
 
-    // console.log("thisState", this.state)
     return (
       <ul id="search-type" className="search-type">
         <li className="search-type__item">
@@ -75,7 +73,7 @@ class Form extends React.Component {
             checked={this.state.searchType === "random"}
             onChange={(e) => this.setState({ searchType: e.target.value })}
           />
-          <label className="main-radio__label" for="random">Random</label>
+          <label className="main-radio__label" htmlFor="random">Random</label>
         </li>
 
         <li className="search-type__item">
@@ -97,7 +95,7 @@ class Form extends React.Component {
                 )
             }}
           />
-          <label className="main-radio__label" for="category">From category</label>
+          <label className="main-radio__label" htmlFor="category">From category</label>
           {this.state.searchType === 'category' ?
             < Categories
               categoriesList={this.props.jokeCategories}
@@ -117,7 +115,7 @@ class Form extends React.Component {
               return this.setState({ searchType: e.target.value })
             }}
           />
-          <label className="main-radio__label" for="search">Search</label>
+          <label className="main-radio__label" htmlFor="search">Search</label>
         </li>
         {
           this.state.searchType === 'search'

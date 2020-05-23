@@ -65,7 +65,7 @@ class Home extends React.Component {
   }
 
   favoriteJokeChecker = (joke) => {
-    // console.log("Home -> favoriteJokeChecker -> joke", joke)
+
     for (const favoriteJoke of this.props.favoriteJokes) {
       if (favoriteJoke.id === joke.id) {
         return true
@@ -80,22 +80,21 @@ class Home extends React.Component {
         {
           jokes.map(joke => {
             const isFavorite = this.favoriteJokeChecker(joke)
-            console.log("Home -> createJokes -> isFavorite", isFavorite)
 
             return isFavorite
 
               ? <Joke
+                key={joke.id}
                 iconClickHandler={this.props.removeFavoriteJokeHandler}
                 icon="love-icon_fill.svg"
-
                 joke={joke.value}
                 id={joke.id}
                 lastUpdate={joke.updated_at}
-
                 categories={joke.categories}
                 jokeObject={joke}
               />
               : <Joke
+                key={joke.id}
                 iconClickHandler={this.props.addFavoriteJokeHandler}
                 icon="love-icon.svg"
                 joke={joke.value}

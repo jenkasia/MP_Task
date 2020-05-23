@@ -11,7 +11,8 @@ class Categories extends React.Component {
       <div className="categories">
         {categories.map(category => {
           return (
-            <div className='category'>
+            <div className='category'
+              key={category}>
               <input
                 className="sub-radio__input"
                 type="radio"
@@ -25,7 +26,7 @@ class Categories extends React.Component {
                 } />
               <label
                 className="sub-radio__label"
-                for={`category__${category}`}>{`${category}`}</label>
+                htmlFor={`category__${category}`}>{`${category}`}</label>
             </div>
           )
         })
@@ -37,7 +38,6 @@ class Categories extends React.Component {
 
 
   render() {
-    console.log(this.props.categoriesList)
     return (
       this.createCategories(this.props.categoriesList)
     )
