@@ -31,6 +31,7 @@ class Joke extends React.Component {
   }
 
   render() {
+    console.log(this.props.joke)
     return (
       <div className={`joke ${this.props.className || ''}`} >
 
@@ -44,8 +45,12 @@ class Joke extends React.Component {
 
           <div className="joke__layout ">
             <div className="joke__id">
-              <p className="joke__id-text">ID: <span className="joke__id-number">{this.props.joke.id}</span></p>
-              <img className="joke__id-icon" src="img/share-icon.svg" alt="icon"></img>
+              <p className="joke__id-text">ID:
+                <a href={this.props.joke.url} target="_blank" rel="noopener noreferrer">
+                  <span className="joke__id-number">{this.props.joke.id}</span>
+                  <img className="joke__id-icon" src="img/share-icon.svg" alt="icon"></img>
+                </a>
+              </p>
             </div>
             <div className="joke__text-block">
               <p className="joke__text">{this.props.joke.value}</p>
