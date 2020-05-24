@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import "./Categories.sass";
 
 function Categories(props) {
@@ -31,6 +32,10 @@ function Categories(props) {
   )
 }
 
-
+Categories.propTypes = {
+  categoriesList: PropTypes.array,
+  activeCategory: PropTypes.string,
+  onChange: PropTypes.func
+}
 
 export default Categories;

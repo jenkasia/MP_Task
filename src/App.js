@@ -25,7 +25,6 @@ class App extends React.Component {
   removeFavoriteJoke = (jokeToRemove) => {
     this.setState(
       prevState => {
-        console.log("App -> removeFavoriteJoke -> prevState", prevState)
         return {
           favoriteJokes: prevState.favoriteJokes.filter(joke => joke.id !== jokeToRemove.id)
         };

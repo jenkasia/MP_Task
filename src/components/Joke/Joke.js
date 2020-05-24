@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./joke.sass";
 
 class Joke extends React.Component {
 
   getHours(date) {
-    console.log(date)
     const MILISECONDS_IN_HOUR = 3600000
     const now = Date.now()
     date = date.replace(' ', "T").concat("Z") //convert to data format^ that sapport safari, chrome and other browser
@@ -31,7 +31,6 @@ class Joke extends React.Component {
   }
 
   render() {
-    console.log(this.props.joke)
     return (
       <div className={`joke ${this.props.className || ''}`} >
 
@@ -67,7 +66,12 @@ class Joke extends React.Component {
       </div >
     )
   }
+}
 
+Joke.propTypes = {
+  onIconClick: PropTypes.func,
+  icon: PropTypes.string,
+  joke: PropTypes.object
 }
 
 export default Joke;

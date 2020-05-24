@@ -1,5 +1,6 @@
 import React from "react";
 import Joke from "../Joke/Joke"
+import PropTypes from 'prop-types';
 import Form from "../Form/Form"
 import Error from "../Error/Error"
 import "./Home.sass";
@@ -18,7 +19,6 @@ class Home extends React.Component {
   getCategories = async () => {
     const api_url = await fetch(`https://api.chucknorris.io/jokes/categories`)
     const data = await api_url.json()
-    console.log('data')
     this.setState({
       jokeCategories: data
     })
@@ -129,7 +129,12 @@ class Home extends React.Component {
       </div>
     )
   }
+}
 
+Form.propTypes = {
+  favoriteJokes: PropTypes.array,
+  addFavoriteJokeHandler: PropTypes.func,
+  removeFavoriteJokeHandler: PropTypes.func
 }
 
 export default Home;
