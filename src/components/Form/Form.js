@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./Form.sass";
 import Categories from "./Categories/Categories"
 
@@ -63,7 +64,6 @@ class Form extends React.Component {
 
 
   render() {
-
     return (
       <form onSubmit={this.handleSubmit}>
         <ul id="search-type" className="search-type">
@@ -145,6 +145,11 @@ class Form extends React.Component {
       </form>
     )
   }
+}
+
+Form.propTypes = {
+  getJokes: PropTypes.func,
+  jokeCategories: PropTypes.array
 }
 
 export default Form;

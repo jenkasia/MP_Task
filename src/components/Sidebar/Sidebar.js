@@ -1,14 +1,13 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./Sidebar.sass";
 import Joke from "../Joke/Joke"
 
 class Sidebar extends React.Component {
 
   componentDidMount() {
-    console.log("mount")
     window.addEventListener('scroll', function () {
       if (window.pageYOffset > 20 && window.innerWidth < 970) {
-        console.log(window.innerWidth)
         window.sidebar_header.style.opacity = "0"
       }
       else {
@@ -58,6 +57,13 @@ class Sidebar extends React.Component {
         </div>
       </>)
   }
+}
+
+Joke.propTypes = {
+  jokes: PropTypes.array,
+  removeFavoriteJokeHandler: PropTypes.func,
+  isSidebarOpen: PropTypes.bool,
+  toggleIsSidebarOpen: PropTypes.func
 }
 
 export default Sidebar;
