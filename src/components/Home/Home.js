@@ -16,9 +16,9 @@ class Home extends React.Component {
   }
 
   getCategories = async () => {
-    // console.log(this.state.jokeCategories)
     const api_url = await fetch(`https://api.chucknorris.io/jokes/categories`)
     const data = await api_url.json()
+    console.log('data')
     this.setState({
       jokeCategories: data
     })
@@ -26,14 +26,10 @@ class Home extends React.Component {
   }
 
   getJokes = async (apiEndUrl) => {
-
-    // const apiEndUrl = 'random'
     const api_url = await fetch(`${API_START_URL + apiEndUrl}`)
     const data = await api_url.json()
-    // console.log(data)
 
     if (data.result) {
-      console.log(data.result)
       if (data.result.length > 0) {
         this.setState({
           jokes: data.result,
@@ -55,7 +51,6 @@ class Home extends React.Component {
       })
     }
     else {
-      // console.log(data)
       this.setState({
         jokes: [data],
         error: ''
@@ -64,7 +59,7 @@ class Home extends React.Component {
 
   }
 
-  favoriteJokeChecker = (joke) => {
+  isFavorite = (joke) => {
 
     for (const favoriteJoke of this.props.favoriteJokes) {
       if (favoriteJoke.id === joke.id) {
@@ -79,29 +74,18 @@ class Home extends React.Component {
       <div className="jokes">
         {
           jokes.map(joke => {
-            const isFavorite = this.favoriteJokeChecker(joke)
-
-            return isFavorite
-
+            return this.isFavorite(joke)
               ? <Joke
                 key={joke.id}
-                iconClickHandler={this.props.removeFavoriteJokeHandler}
+                onIconClick={this.props.removeFavoriteJokeHandler}
                 icon="love-icon_fill.svg"
-                joke={joke.value}
-                id={joke.id}
-                lastUpdate={joke.updated_at}
-                categories={joke.categories}
-                jokeObject={joke}
+                joke={joke}
               />
               : <Joke
                 key={joke.id}
-                iconClickHandler={this.props.addFavoriteJokeHandler}
+                onIconClick={this.props.addFavoriteJokeHandler}
                 icon="love-icon.svg"
-                joke={joke.value}
-                id={joke.id}
-                lastUpdate={joke.updated_at}
-                categories={joke.categories}
-                jokeObject={joke}
+                joke={joke}
               />
           })
         }
@@ -125,7 +109,7 @@ class Home extends React.Component {
         </header>
 
         <Form
-          getJokesMethod={this.getJokes}
+          getJokes={this.getJokes}
           jokeCategories={this.state.jokeCategories} />
 
         {
@@ -136,12 +120,12 @@ class Home extends React.Component {
 
         {
           this.state.error
-            ? <Error
-              errorText={this.state.error}
-            />
+            ? <Error>
+              {this.state.error}
+            </Error>
+
             : null
         }
-
       </div>
     )
   }

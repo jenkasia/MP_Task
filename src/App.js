@@ -2,45 +2,43 @@ import React from 'react';
 import './App.sass';
 import Home from "./components/Home/Home";
 import Sidebar from "./components/Sidebar/Sidebar";
-// import { render } from 'node-sass';
-
 
 class App extends React.Component {
 
   state = {
     favoriteJokes: JSON.parse(localStorage.getItem('favoriteJokes')) || [],
-    sidebarIsOpen: false
+    isSidebarOpen: false
   }
 
   addFavoriteJoke = (joke) => {
-    let newFavoriteJokes = this.state.favoriteJokes.concat(joke)
     this.setState(
-      {
-        favoriteJokes: newFavoriteJokes
-      })
-    localStorage.setItem('favoriteJokes', JSON.stringify(newFavoriteJokes))
+      prevState => {
+        return {
+          favoriteJokes: prevState.favoriteJokes.concat(joke)
+        }
+      },
+      () => {
+        localStorage.setItem('favoriteJokes', JSON.stringify(this.state.favoriteJokes))
+      });
   }
 
-  removeFavoriteJoke = (jokeForRemove) => {
-    const favoriteJokes = this.state.favoriteJokes
-    for (let i = 0; i < favoriteJokes.length; i++) {
-
-
-      if (favoriteJokes[i].id === jokeForRemove.id) {
-        const newFavoriteJokesList = favoriteJokes.concat()
-        newFavoriteJokesList.splice(i, 1)
-        localStorage.setItem('favoriteJokes', JSON.stringify(newFavoriteJokesList))
-        this.setState(
-          {
-            favoriteJokes: newFavoriteJokesList
-          })
+  removeFavoriteJoke = (jokeToRemove) => {
+    this.setState(
+      prevState => {
+        console.log("App -> removeFavoriteJoke -> prevState", prevState)
+        return {
+          favoriteJokes: prevState.favoriteJokes.filter(joke => joke.id !== jokeToRemove.id)
+        };
+      },
+      () => {
+        localStorage.setItem('favoriteJokes', JSON.stringify(this.state.favoriteJokes))
       }
-    }
+    );
   }
 
-  openToggleHandler = () => {
+  toggleIsSidebarOpen = () => {
     this.setState({
-      sidebarIsOpen: !this.state.sidebarIsOpen
+      isSidebarOpen: !this.state.isSidebarOpen
     })
   }
 
@@ -55,10 +53,9 @@ class App extends React.Component {
         <Sidebar
           jokes={this.state.favoriteJokes}
           removeFavoriteJokeHandler={this.removeFavoriteJoke}
-          sidebarIsOpen={this.state.sidebarIsOpen}
-          onClick={this.openToggleHandler}
+          isSidebarOpen={this.state.isSidebarOpen}
+          toggleIsSidebarOpen={this.toggleIsSidebarOpen}
         />
-
       </div>
     );
   }
