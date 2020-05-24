@@ -58,7 +58,7 @@ class App extends React.Component {
           jokes={this.state.favoriteJokes}
           removeFavoriteJokeHandler={this.removeFavoriteJoke}
           isSidebarOpen={this.state.isSidebarOpen}
-          onClick={this.toggleIsSidebarOpen}
+          toggleIsSidebarOpen={this.toggleIsSidebarOpen}
         />
       </div>
     );
