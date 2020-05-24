@@ -24,12 +24,6 @@ class App extends React.Component {
         localStorage.setItem('favoriteJokes', JSON.stringify(this.state.favoriteJokes))
       }
     )
-    // let newFavoriteJokes = this.state.favoriteJokes.concat(joke)
-    // this.setState(
-    //   {
-    //     favoriteJokes: newFavoriteJokes
-    //   })
-    // localStorage.setItem('favoriteJokes', JSON.stringify(newFavoriteJokes))
   }
 
   removeFavoriteJoke = (jokeToRemove) => {
@@ -44,22 +38,6 @@ class App extends React.Component {
         localStorage.setItem('favoriteJokes', JSON.stringify(this.state.favoriteJokes))
       }
     );
-
-
-    // const favoriteJokes = this.state.favoriteJokes
-    // for (let i = 0; i < favoriteJokes.length; i++) {
-
-
-    //   if (favoriteJokes[i].id === jokeToRemove.id) {
-    //     const newFavoriteJokesList = favoriteJokes.concat()
-    //     newFavoriteJokesList.splice(i, 1)
-    //     localStorage.setItem('favoriteJokes', JSON.stringify(newFavoriteJokesList))
-    //     this.setState(
-    //       {
-    //         favoriteJokes: newFavoriteJokesList
-    //       })
-    //   }
-    // }
   }
 
   toggleIsSidebarOpen = () => {
