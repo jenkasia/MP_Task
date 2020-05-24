@@ -16,7 +16,6 @@ class Home extends React.Component {
   }
 
   getCategories = async () => {
-    // console.log(this.state.jokeCategories)
     const api_url = await fetch(`https://api.chucknorris.io/jokes/categories`)
     const data = await api_url.json()
     console.log('data')
@@ -137,9 +136,10 @@ class Home extends React.Component {
 
         {
           this.state.error
-            ? <Error
-              errorText={this.state.error}
-            />
+            ? <Error>
+              {this.state.error}
+            </Error>
+
             : null
         }
 
