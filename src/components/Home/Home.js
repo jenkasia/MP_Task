@@ -28,10 +28,8 @@ class Home extends React.Component {
   getJokes = async (apiEndUrl) => {
     const api_url = await fetch(`${API_START_URL + apiEndUrl}`)
     const data = await api_url.json()
-    console.log(data)
 
     if (data.result) {
-      console.log(data.result)
       if (data.result.length > 0) {
         this.setState({
           jokes: data.result,
@@ -112,7 +110,7 @@ class Home extends React.Component {
         </header>
 
         <Form
-          getJokesMethod={this.getJokes}
+          getJokes={this.getJokes}
           jokeCategories={this.state.jokeCategories} />
 
         {

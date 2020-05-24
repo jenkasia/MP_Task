@@ -14,36 +14,32 @@ class Form extends React.Component {
   };
 
 
-  handleGetJoke(apiEndUrl) {
-
+  onGetJokeButtonClick(apiEndUrl) {
     switch (apiEndUrl) {
       case 'random':
-        return () => {
-          this.props.getJokesMethod('random')
-        }
+        this.props.getJokes('random')
+        break;
 
       case 'category':
-        return () => {
-          this.props.getJokesMethod(`random?category=${this.state.activeCategory}`)
-        }
+        this.props.getJokes(`random?category=${this.state.activeCategory}`)
+        break;
 
       case 'search':
-        return () => {
-          this.props.getJokesMethod(`search?query=${this.state.search}`)
-        }
+        this.props.getJokes(`search?query=${this.state.search}`)
+        break;
 
       default:
         break;
     }
   }
 
-  categoryHandler = (category) => {
+  onSelectSeachByCategory = (category) => {
     this.setState({
       activeCategory: category
     })
   }
 
-  searchFieldHandler = event => {
+  onSelectSearchByInputText = event => {
     if (event.target.value.length < 3 || event.target.value.length > 120) {
       this.setState({
         search: event.target.value,
@@ -59,90 +55,94 @@ class Form extends React.Component {
     }
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.onGetJokeButtonClick(this.state.searchType)
+  }
+
+
+
   render() {
 
     return (
-      <ul id="search-type" className="search-type">
-        <li className="search-type__item">
-          <input
-            className='main-radio__input'
-            type="radio"
-            id="random"
-            name="getMethod"
-            value="random"
-            checked={this.state.searchType === "random"}
-            onChange={(e) => this.setState({ searchType: e.target.value })}
-          />
-          <label className="main-radio__label" htmlFor="random">Random</label>
-        </li>
+      <form onSubmit={this.handleSubmit}>
+        <ul id="search-type" className="search-type">
+          <li className="search-type__item">
+            <input
+              className='main-radio__input'
+              type="radio"
+              id="random"
+              name="getMethod"
+              value="random"
+              checked={this.state.searchType === "random"}
+              onChange={(e) => this.setState({ searchType: e.target.value })}
+            />
+            <label className="main-radio__label" htmlFor="random">Random</label>
+          </li>
 
-        <li className="search-type__item">
-          <input className='main-radio__input'
-            type="radio"
-            id="category"
-            name="getMethod"
-            value="category"
-            checked={this.state.searchType === "category"}
-            onChange={(e) => {
-              this.state.activeCategory
-                ? this.setState({
-                  searchType: e.target.value,
-                })
-                : this.setState({
-                  searchType: e.target.value,
-                  activeCategory: this.props.jokeCategories[0]
-                }
-                )
-            }}
-          />
-          <label className="main-radio__label" htmlFor="category">From category</label>
-          {this.state.searchType === 'category' ?
-            < Categories
-              categoriesList={this.props.jokeCategories}
-              categoryHandler={this.categoryHandler}
-              activeCategory={this.state.activeCategory} />
-            : null}
-        </li>
+          <li className="search-type__item">
+            <input className='main-radio__input'
+              type="radio"
+              id="category"
+              name="getMethod"
+              value="category"
+              checked={this.state.searchType === "category"}
+              onChange={(e) => {
+                this.state.activeCategory
+                  ? this.setState({
+                    searchType: e.target.value,
+                  })
+                  : this.setState({
+                    searchType: e.target.value,
+                    activeCategory: this.props.jokeCategories[0]
+                  }
+                  )
+              }}
+            />
+            <label className="main-radio__label" htmlFor="category">From category</label>
+            {this.state.searchType === 'category' ?
+              < Categories
+                categoriesList={this.props.jokeCategories}
+                onChange={this.onSelectSeachByCategory}
+                activeCategory={this.state.activeCategory} />
+              : null}
+          </li>
 
-        <li className="search-type__item">
-          <input className='main-radio__input'
-            type="radio"
-            id="search"
-            name="getMethod"
-            value="search"
-            checked={this.state.searchType === "search"}
-            onChange={(e) => {
-              return this.setState({ searchType: e.target.value })
-            }}
-          />
-          <label className="main-radio__label" htmlFor="search">Search</label>
-        </li>
-        {
-          this.state.searchType === 'search'
-            ? <div className="input__box">
+          <li className="search-type__item">
+            <input className='main-radio__input'
+              type="radio"
+              id="search"
+              name="getMethod"
+              value="search"
+              checked={this.state.searchType === "search"}
+              onChange={(e) => {
+                return this.setState({ searchType: e.target.value })
+              }}
+            />
+            <label className="main-radio__label" htmlFor="search">Search</label>
+          </li>
+          {
+            this.state.searchType === 'search'
+              ? <div className="input__box">
 
-              <input
-                className="search__input"
-                type="text"
-                id="lname"
-                name="lname"
-                value={this.state.search}
-                placeholder="Free text search..."
-                // error={this.state.queryError}x
-                onChange={this.searchFieldHandler} />
-            </div>
-            : null
-        }
-        < button
-          disabled={
-            this.state.queryError && this.state.searchType === 'search'
-              ? true
-              : false
+                <input
+                  className="search__input"
+                  type="text"
+                  id="lname"
+                  name="lname"
+                  value={this.state.search}
+                  placeholder="Free text search..."
+                  onChange={this.onSelectSearchByInputText} />
+              </div>
+              : null
           }
-          onClick={this.handleGetJoke(this.state.searchType)}
+        </ul >
+        < input
+          disabled={this.state.queryError && this.state.searchType === 'search'}
           className="search-type__button"
-          type="button">Get a joke</button>
-      </ul >
+          type="submit"
+          value="Get a joke" />
+      </form>
     )
   }
 }

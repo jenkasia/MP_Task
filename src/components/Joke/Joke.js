@@ -19,7 +19,11 @@ class Joke extends React.Component {
   }
 
   renderCategory() {
-    let categories = this.props.categories
+    if (this.props.className === 'joke_sidebar') {
+      return null
+    }
+
+    let categories = this.props.joke.categories
     if (categories && categories.length > 0) {
       return <p className="joke__category">{categories[0]}</p>
     }

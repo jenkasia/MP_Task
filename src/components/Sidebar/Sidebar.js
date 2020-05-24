@@ -7,8 +7,8 @@ class Sidebar extends React.Component {
   componentDidMount() {
     console.log("mount")
     window.addEventListener('scroll', function () {
-      console.log(window.pageYOffset)
-      if (window.pageYOffset > 20) {
+      if (window.pageYOffset > 20 && window.innerWidth < 970) {
+        console.log(window.innerWidth)
         window.sidebar_header.style.opacity = "0"
       }
       else {
