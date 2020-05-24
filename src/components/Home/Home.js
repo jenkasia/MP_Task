@@ -26,8 +26,6 @@ class Home extends React.Component {
   }
 
   getJokes = async (apiEndUrl) => {
-
-    // const apiEndUrl = 'random'
     const api_url = await fetch(`${API_START_URL + apiEndUrl}`)
     const data = await api_url.json()
     console.log(data)
@@ -80,28 +78,28 @@ class Home extends React.Component {
         {
           jokes.map(joke => {
             const isFavorite = this.favoriteJokeChecker(joke)
-
+            console.log(joke.updated_at)
             return isFavorite
 
               ? <Joke
                 key={joke.id}
-                iconClickHandler={this.props.removeFavoriteJokeHandler}
+                onIconClick={this.props.removeFavoriteJokeHandler}
                 icon="love-icon_fill.svg"
-                joke={joke.value}
-                id={joke.id}
-                lastUpdate={joke.updated_at}
-                categories={joke.categories}
-                jokeObject={joke}
+                // joke={joke.value}
+                // id={joke.id}
+                // lastUpdate={joke.updated_at}
+                // categories={joke.categories}
+                joke={joke}
               />
               : <Joke
                 key={joke.id}
-                iconClickHandler={this.props.addFavoriteJokeHandler}
+                onIconClick={this.props.addFavoriteJokeHandler}
                 icon="love-icon.svg"
-                joke={joke.value}
-                id={joke.id}
-                lastUpdate={joke.updated_at}
-                categories={joke.categories}
-                jokeObject={joke}
+                // joke={joke.value}
+                // id={joke.id}
+                // lastUpdate={joke.updated_at}
+                // categories={joke.categories}
+                joke={joke}
               />
           })
         }

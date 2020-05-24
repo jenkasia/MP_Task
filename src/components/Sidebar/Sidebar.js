@@ -27,11 +27,8 @@ class Sidebar extends React.Component {
               key={joke.id}
               icon="love-icon_fill.svg"
               className="joke_sidebar"
-              joke={joke.value}
-              id={joke.id}
-              lastUpdate={joke.updated_at}
-              iconClickHandler={this.props.removeFavoriteJokeHandler}
-              jokeObject={joke} />
+              onIconClick={this.props.removeFavoriteJokeHandler}
+              joke={joke} />
           })}
         </div>)
       : null
