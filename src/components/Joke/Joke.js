@@ -31,7 +31,6 @@ class Joke extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className={`joke ${this.props.className || ''}`} >
 

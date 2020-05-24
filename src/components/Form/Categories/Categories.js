@@ -1,9 +1,6 @@
 import React from "react";
 import "./Categories.sass";
 
-
-
-
 function Categories(props) {
 
   return (

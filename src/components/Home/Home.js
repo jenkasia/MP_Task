@@ -51,7 +51,6 @@ class Home extends React.Component {
       })
     }
     else {
-      // console.log(data)
       this.setState({
         jokes: [data],
         error: ''
@@ -127,7 +126,6 @@ class Home extends React.Component {
 
             : null
         }
-
       </div>
     )
   }
