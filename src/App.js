@@ -2,8 +2,6 @@ import React from 'react';
 import './App.sass';
 import Home from "./components/Home/Home";
 import Sidebar from "./components/Sidebar/Sidebar";
-// import { render } from 'node-sass';
-
 
 class App extends React.Component {
 
@@ -13,7 +11,6 @@ class App extends React.Component {
   }
 
   addFavoriteJoke = (joke) => {
-
     this.setState(
       prevState => {
         return {
@@ -22,8 +19,7 @@ class App extends React.Component {
       },
       () => {
         localStorage.setItem('favoriteJokes', JSON.stringify(this.state.favoriteJokes))
-      }
-    )
+      });
   }
 
   removeFavoriteJoke = (jokeToRemove) => {

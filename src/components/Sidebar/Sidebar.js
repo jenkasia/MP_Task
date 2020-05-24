@@ -17,12 +17,12 @@ class Sidebar extends React.Component {
     });
   }
 
-  createJokes = (jokes) => {
-    return (
-      <div className="jokes jokes_sidebar"
-        id="sidebar">
-        {
-          jokes.map(joke => {
+  renderJokes() {
+    return this.props.jokes.length > 0
+      ? (
+        <div className="jokes jokes_sidebar"
+          id="sidebar">
+          {this.props.jokes.map(joke => {
             return <Joke
               key={joke.id}
               icon="love-icon_fill.svg"
@@ -31,31 +31,33 @@ class Sidebar extends React.Component {
               id={joke.id}
               lastUpdate={joke.updated_at}
               iconClickHandler={this.props.removeFavoriteJokeHandler}
-              jokeObject={joke}
-            // categories={joke.categories}
-            />
-          })
-        }
-      </div>)
+              jokeObject={joke} />
+          })}
+        </div>)
+      : null
   }
 
   render() {
-
     return (
       <>
-        <div className={`sidebar__backdrop ${this.props.isSidebarOpen ? 'sidebar__backdrop_open' : ''}`} onClick={this.props.toggleIsSidebarOpen} />
-        <div className={`sidebar ${this.props.isSidebarOpen ? 'sidebar_open' : ''}`}>
-          <div className="sidebar__header" id="sidebar_header">
-            <div className={`sidebar__button ${this.props.isSidebarOpen ? 'sidebar__button_open' : ''}`} onClick={this.props.toggleIsSidebarOpen}>
-              <div className="sidebar__burger"></div>
-            </div>
-            <h3 className="sidebar__favorite">Favorite</h3>
-          </div>
+        <div
+          className={`sidebar__backdrop ${this.props.isSidebarOpen ? 'sidebar__backdrop_open' : ''}`}
+          onClick={this.props.toggleIsSidebarOpen} />
 
-          {this.props.jokes.length > 0
-            ? this.createJokes(this.props.jokes)
-            : null
-          }
+        <div className={`sidebar ${this.props.isSidebarOpen ? 'sidebar_open' : ''}`}>
+          <div
+            className="sidebar__header"
+            id="sidebar_header">
+            <div
+              className={`sidebar__button ${this.props.isSidebarOpen ? 'sidebar__button_open' : ''}`}
+              onClick={this.props.toggleIsSidebarOpen}>
+              <div className="sidebar__burger" />
+            </div>
+            <h3 className="sidebar__favorite">
+              Favorite
+            </h3>
+          </div>
+          {this.renderJokes()}
         </div>
       </>)
   }
