@@ -4,16 +4,17 @@ import "./joke.sass";
 class Joke extends React.Component {
 
   getHours(date) {
-    // console.log("Joke -> getHours -> date", date)
     const MILISECONDS_IN_HOUR = 3600000
     const now = Date.now()
+    date = date.replace(' ', "T").concat("Z") //convert to data format^ that sapport safari, chrome and other browser
     const presentDate = new Date(date)
     const result = Math.floor((now - presentDate) / MILISECONDS_IN_HOUR)
+
 
     if (result === 1) {
       return `1 hour ago`
     }
-    return `${result} hour ago`
+    return `${result} hours ago`
   }
 
   categoryRender(categories) {
@@ -26,7 +27,7 @@ class Joke extends React.Component {
   render() {
     // console.log('props', this.props)
     return (
-      <div className={`joke ${this.props.className}`} >
+      <div className={`joke ${this.props.className || ''}`} >
 
         <img onClick={event => this.props.iconClickHandler(this.props.jokeObject)} className="joke__love-icon" alt="icon" src={`img/${this.props.icon}`}></img>
 

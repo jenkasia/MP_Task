@@ -1,5 +1,11 @@
+@import "./styles/reset"
+@import "./styles/mixins"
+
+@include font-face(Roboto, "../fonts/Roboto", 400, normal)
+@include font-face(Roboto, "../fonts/Roboto-Medium", 500, normal)
+@include font-face(Roboto, "../fonts/Roboto-Bold", 700, normal)
+
 body
-  margin: 0
   font-family: Roboto, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale

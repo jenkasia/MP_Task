@@ -3,21 +3,23 @@
   padding: 40px
   box-sizing: border-box
   background-color: #f8f8f8
-  min-height: 100vh
   z-index: 2
-  overflow-x: hidden
-  transition: all 0.4s ease-out
-  max-height: calc(100%)
+  transition: all .4s ease-out
+  min-height: 100vh
   @media (max-width: 969px)
     top: 0
-    overflow-y: scroll
     position: fixed
     right: -480px
     &_open
+      position: absolute
       right: 0
   @media (max-width: 480px)
     width: 100%
-    overflow-y: scroll
+    position: fixed
+    &_open
+      // overflow-y: scroll
+      padding: 40px 20px 20px 20px
+      position: absolute
 
   &__backdrop
     @media (max-width: 969px)
@@ -34,6 +36,15 @@
       display: none
 
   &__header
+    transition: all 0.4s ease
+    @media (max-width: 969px)
+      right: 40px
+      top: 40px
+      position: fixed
+      display: flex
+      justify-content: flex-end
+      margin-bottom: 20px
+      z-index: 3
     @media (max-width: 969px)
       right: 40px
       top: 40px
@@ -75,11 +86,6 @@
         top: 13px
     @media (max-width: 969px)
       display: block
-
-  &__jokes
-    margin-top: 20px
-    @media (max-width: 969px)
-      margin-top: 50px
 
   &__favorite
     font-size: 20px

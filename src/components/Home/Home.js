@@ -19,6 +19,7 @@ class Home extends React.Component {
     // console.log(this.state.jokeCategories)
     const api_url = await fetch(`https://api.chucknorris.io/jokes/categories`)
     const data = await api_url.json()
+    console.log('data')
     this.setState({
       jokeCategories: data
     })
@@ -30,7 +31,7 @@ class Home extends React.Component {
     // const apiEndUrl = 'random'
     const api_url = await fetch(`${API_START_URL + apiEndUrl}`)
     const data = await api_url.json()
-    // console.log(data)
+    console.log(data)
 
     if (data.result) {
       console.log(data.result)
