@@ -43,10 +43,10 @@ class Sidebar extends React.Component {
 
     return (
       <>
-        <div className={`sidebar__backdrop ${this.props.isSidebarOpen ? 'sidebar__backdrop_open' : ''}`} onClick={this.props.onClick} />
+        <div className={`sidebar__backdrop ${this.props.isSidebarOpen ? 'sidebar__backdrop_open' : ''}`} onClick={this.props.toggleIsSidebarOpen} />
         <div className={`sidebar ${this.props.isSidebarOpen ? 'sidebar_open' : ''}`}>
           <div className="sidebar__header" id="sidebar_header">
-            <div className={`sidebar__button ${this.props.isSidebarOpen ? 'sidebar__button_open' : ''}`} onClick={this.props.onClick}>
+            <div className={`sidebar__button ${this.props.isSidebarOpen ? 'sidebar__button_open' : ''}`} onClick={this.props.toggleIsSidebarOpen}>
               <div className="sidebar__burger"></div>
             </div>
             <h3 className="sidebar__favorite">Favorite</h3>
