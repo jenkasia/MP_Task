@@ -1,4 +1,4 @@
-# Pet Project "Chuck Norris Jokes"
+# Pet Project "Chuck Norris Jokes".
 
 ### You can see build app [here](https://jenkasia.github.io/MP_Task/)
 
